@@ -1,9 +1,8 @@
 # AKFloatingLabel
 
 [![CI Status](http://img.shields.io/travis/dogo/AKFloatingLabel.svg?style=flat)](https://travis-ci.org/dogo/AKFloatingLabel)
-[![Version](https://img.shields.io/cocoapods/v/AKFloatingLabel.svg?style=flat)](http://cocoapods.org/pods/AKFloatingLabel)
+[![Cocoapods](https://img.shields.io/cocoapods/v/AKFloatingLabel.svg?style=flat)](http://cocoapods.org/pods/AKFloatingLabel)
 [![Pod License](https://img.shields.io/cocoapods/l/AKFloatingLabel.svg?style=flat)](https://github.com/dogo/AKFloatingLabel/blob/master/LICENSE)
-[![Platform](https://img.shields.io/cocoapods/p/AKFloatingLabel.svg?style=flat)](http://cocoapods.org/pods/AKFloatingLabel)
 
 ## Example
 

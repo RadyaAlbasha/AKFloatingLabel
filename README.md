@@ -1,8 +1,8 @@
 # AKFloatingLabel
 
-[![CI Status](http://img.shields.io/travis/Diogo Autilio/AKFloatingLabel.svg?style=flat)](https://travis-ci.org/Diogo Autilio/AKFloatingLabel)
+[![CI Status](http://img.shields.io/travis/dogo/AKFloatingLabel.svg?style=flat)](https://travis-ci.org/dogo/AKFloatingLabel)
 [![Version](https://img.shields.io/cocoapods/v/AKFloatingLabel.svg?style=flat)](http://cocoapods.org/pods/AKFloatingLabel)
-[![License](https://img.shields.io/cocoapods/l/AKFloatingLabel.svg?style=flat)](http://cocoapods.org/pods/AKFloatingLabel)
+[![Pod License](https://img.shields.io/cocoapods/l/AKFloatingLabel.svg?style=flat)](https://github.com/dogo/AKFloatingLabel/blob/master/LICENSE)
 [![Platform](https://img.shields.io/cocoapods/p/AKFloatingLabel.svg?style=flat)](http://cocoapods.org/pods/AKFloatingLabel)
 
 ## Example
@@ -22,7 +22,7 @@ pod "AKFloatingLabel"
 
 ## Author
 
-Diogo Autilio, diogo.autilio@concrete.com.br
+Diogo Autilio, diautilio@gmail.com
 
 ## License
 

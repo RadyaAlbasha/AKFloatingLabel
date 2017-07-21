@@ -19,6 +19,6 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '8.0'
 
-  s.source           = { :git => 'https://github.com/dogo/AAKFloatingLabel.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/dogo/AKFloatingLabel.git', :tag => s.version.to_s }
   s.source_files     = 'AKFloatingLabel/Classes/**/*'
 end

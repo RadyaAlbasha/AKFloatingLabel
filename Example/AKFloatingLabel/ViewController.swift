@@ -30,7 +30,7 @@ class ViewController: UIViewController {
 
         let titleField = AKFloatingLabelTextField(frame: .zero)
         titleField.font = UIFont.systemFont(ofSize: 16)
-        titleField.attributedPlaceholder = NSAttributedString(string: "Title", attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
+        titleField.attributedPlaceholder = NSAttributedString(string: "Title", attributes: [NSAttributedStringKey.foregroundColor: UIColor.darkGray])
         titleField.floatingLabelFont = UIFont.boldSystemFont(ofSize: 11)
         titleField.floatingLabelTextColor = floatingLabelColor
         titleField.clearButtonMode = .whileEditing
@@ -45,7 +45,7 @@ class ViewController: UIViewController {
 
         let priceField = AKFloatingLabelTextField(frame: .zero)
         priceField.font = UIFont.systemFont(ofSize: 16)
-        priceField.attributedPlaceholder = NSAttributedString(string: "Price", attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
+        priceField.attributedPlaceholder = NSAttributedString(string: "Price", attributes: [NSAttributedStringKey.foregroundColor: UIColor.darkGray])
         priceField.floatingLabelFont = UIFont.boldSystemFont(ofSize: 11)
         priceField.floatingLabelTextColor = floatingLabelColor
         view.addSubview(priceField)
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
 
         let locationField = AKFloatingLabelTextField(frame: .zero)
         locationField.font = UIFont.systemFont(ofSize: 16)
-        locationField.attributedPlaceholder = NSAttributedString(string: "Specific Location (optional)", attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
+        locationField.attributedPlaceholder = NSAttributedString(string: "Specific Location (optional)", attributes: [NSAttributedStringKey.foregroundColor: UIColor.darkGray])
         locationField.floatingLabelFont = UIFont.boldSystemFont(ofSize: 11)
         locationField.floatingLabelTextColor = floatingLabelColor
         view.addSubview(locationField)

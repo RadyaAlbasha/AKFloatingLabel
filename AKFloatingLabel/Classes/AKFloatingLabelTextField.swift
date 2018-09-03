@@ -185,10 +185,10 @@ import UIKit
         var textFieldFont: UIFont?
 
         if textFieldFont == nil, self.attributedPlaceholder != nil, let placeholder = self.attributedPlaceholder, placeholder.length > 0 {
-            textFieldFont = self.attributedPlaceholder?.attribute(NSFontAttributeName, at: 0, effectiveRange: nil) as? UIFont
+            textFieldFont = self.attributedPlaceholder?.attribute(NSAttributedStringKey.font, at: 0, effectiveRange: nil) as? UIFont
         }
         if textFieldFont == nil, self.attributedText != nil, let placeholder = self.attributedText, placeholder.length > 0 {
-            textFieldFont = self.attributedText?.attribute(NSFontAttributeName, at: 0, effectiveRange: nil) as? UIFont
+            textFieldFont = self.attributedText?.attribute(NSAttributedStringKey.font, at: 0, effectiveRange: nil) as? UIFont
         }
         if textFieldFont == nil {
             textFieldFont = self.font
@@ -303,7 +303,7 @@ import UIKit
 
     func setCorrectPlaceholder(_ placeholder: String?) {
         if let placeholderColor = placeholderColor, let placeholder = placeholder {
-            let attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSForegroundColorAttributeName: placeholderColor])
+            let attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
             super.attributedPlaceholder = attributedPlaceholder
         } else {
             super.placeholder = placeholder

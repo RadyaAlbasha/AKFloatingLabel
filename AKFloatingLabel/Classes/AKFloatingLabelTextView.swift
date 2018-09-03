@@ -234,7 +234,7 @@ import UIKit
         var textViewFont: UIFont?
 
         if textViewFont == nil, placeholderLabel.attributedText != nil, let placeholder = placeholderLabel.attributedText, placeholder.length > 0 {
-            textViewFont = placeholderLabel.attributedText?.attribute(NSFontAttributeName, at: 0, effectiveRange: nil) as? UIFont
+            textViewFont = placeholderLabel.attributedText?.attribute(NSAttributedStringKey.font, at: 0, effectiveRange: nil) as? UIFont
         }
         if textViewFont == nil {
             textViewFont = placeholderLabel.font

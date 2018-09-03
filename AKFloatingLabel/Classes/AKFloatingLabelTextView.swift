@@ -227,11 +227,11 @@ import UIKit
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextViewTextDidChange, object: self)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextViewTextDidBeginEditing, object: self)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextViewTextDidEndEditing, object:self)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextViewTextDidEndEditing, object: self)
     }
 
     func defaultFloatingLabelFont() -> UIFont? {
-        var textViewFont: UIFont? = nil
+        var textViewFont: UIFont?
 
         if textViewFont == nil, placeholderLabel.attributedText != nil, let placeholder = placeholderLabel.attributedText, placeholder.length > 0 {
             textViewFont = placeholderLabel.attributedText?.attribute(NSFontAttributeName, at: 0, effectiveRange: nil) as? UIFont
@@ -268,7 +268,7 @@ import UIKit
             let textRect: CGRect = self.textRect()
 
             placeholderLabel.alpha = !textIsEmpty ? 0.0 : 1.0
-            placeholderLabel.frame = CGRect(x: textRect.origin.x, y: textRect.origin.y, width: placeholderLabelSize.width, height:placeholderLabelSize.height)
+            placeholderLabel.frame = CGRect(x: textRect.origin.x, y: textRect.origin.y, width: placeholderLabelSize.width, height: placeholderLabelSize.height)
         }
 
         setLabelOriginForTextAlignment()
@@ -405,7 +405,7 @@ import UIKit
     }
 
     public func updateState(_ validationState: TextViewState, withMessage message: String) {
-        var lineColor: UIColor? = nil
+        var lineColor: UIColor?
         currentValidationState = validationState
 
         switch validationState {

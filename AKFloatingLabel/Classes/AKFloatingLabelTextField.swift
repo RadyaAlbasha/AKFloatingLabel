@@ -182,7 +182,7 @@ import UIKit
     // MARK: -
 
     func defaultFloatingLabelFont() -> UIFont? {
-        var textFieldFont: UIFont? = nil
+        var textFieldFont: UIFont?
 
         if textFieldFont == nil, self.attributedPlaceholder != nil, let placeholder = self.attributedPlaceholder, placeholder.length > 0 {
             textFieldFont = self.attributedPlaceholder?.attribute(NSFontAttributeName, at: 0, effectiveRange: nil) as? UIFont
@@ -477,7 +477,7 @@ import UIKit
     }
 
     public func updateState(_ validationState: TextFieldState, withMessage message: String) {
-        var lineColor: UIColor? = nil
+        var lineColor: UIColor?
         currentValidationState = validationState
 
         switch validationState {

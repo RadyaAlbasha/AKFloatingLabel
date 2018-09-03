@@ -77,19 +77,19 @@ import UIKit
      * Text color to be applied to the floating label.
      * Defaults to `UIColor.gray`.
      */
-    @IBInspectable public var floatingLabelTextColor: UIColor = UIColor.gray
+    @IBInspectable public var floatingLabelTextColor: UIColor = .gray
 
     /**
      * Text color to be applied to the invalid label.
      * Defaults to `UIColor.red`.
      */
-    @IBInspectable public var invalidTextFieldColor: UIColor = UIColor.red
+    @IBInspectable public var invalidTextFieldColor: UIColor = .red
 
     /**
      * Text color to be applied to the invalid label.
      * Defaults to `UIColor.gray`.
      */
-    @IBInspectable public var validTextFieldColor: UIColor = UIColor.gray
+    @IBInspectable public var validTextFieldColor: UIColor = .gray
 
     /**
      * Indicates whether the floating label's appearance should be animated regardless of first responder status.
@@ -219,7 +219,7 @@ import UIKit
         } else if self.responds(to: #selector(getter: self.tintColor)) {
             return self.tintColor
         }
-        return UIColor.blue
+        return .blue
     }
 
     // MARK: - Floating label visibility

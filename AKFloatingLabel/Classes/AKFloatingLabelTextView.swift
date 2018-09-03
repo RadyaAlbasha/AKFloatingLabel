@@ -53,19 +53,19 @@ import UIKit
      * Defaults to `UIColor.gray`.
      * Provided for the convenience of using as an appearance proxy.
      */
-    @IBInspectable public var floatingLabelTextColor: UIColor = UIColor.gray
+    @IBInspectable public var floatingLabelTextColor: UIColor = .gray
 
     /**
      * Text color to be applied to the invalid label.
      * Defaults to `UIColor.red`.
      */
-    @IBInspectable public var invalidTextFieldColor: UIColor = UIColor.red
+    @IBInspectable public var invalidTextFieldColor: UIColor = .red
 
     /**
      * Text color to be applied to the invalid label.
      * Defaults to `UIColor.gray`.
      */
-    @IBInspectable public var validTextFieldColor: UIColor = UIColor.gray
+    @IBInspectable public var validTextFieldColor: UIColor = .gray
 
     /**
      * Indicates whether the floating label's appearance should be animated regardless of first responder status.

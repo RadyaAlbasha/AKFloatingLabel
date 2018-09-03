@@ -10,6 +10,8 @@ Due to space constraints on mobile devices, it is common to rely solely on place
 
 This UI component library, which includes both a UITextField and UITextView subclass, aims to improve the user experience by having placeholders transition into floating labels that hover above the fields after they are populated with text.
 
+![BackgroundImage](https://raw.githubusercontent.com/dogo/AKFloatingLabel/master/ScreenShots/Sample.png)_
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.

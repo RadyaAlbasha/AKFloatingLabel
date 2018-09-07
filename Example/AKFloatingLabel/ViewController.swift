@@ -34,6 +34,7 @@ class ViewController: UIViewController {
         titleField.floatingLabelFont = UIFont.boldSystemFont(ofSize: 11)
         titleField.floatingLabelTextColor = floatingLabelColor
         titleField.clearButtonMode = .whileEditing
+        titleField.clearButtonColor = .red
         self.view.addSubview(titleField)
         titleField.translatesAutoresizingMaskIntoConstraints = false
         titleField.keepBaseline = true

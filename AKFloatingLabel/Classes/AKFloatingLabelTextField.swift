@@ -139,6 +139,12 @@ import UIKit
      */
     @IBInspectable public var hasBottomBorder: Bool = true
 
+    /**
+     * Change the tint color of the clear button
+     * Defaults to nil
+     */
+    @IBInspectable public var clearButtonColor: UIColor?
+
     // MARK: - Private Properties
 
     private var isFloatingLabelFontDefault: Bool = true
@@ -396,11 +402,22 @@ import UIKit
         return rect
     }
 
-    func maxTopInset() -> Float {
+    private func maxTopInset() -> Float {
         guard let font = font else {
             return 0.0
         }
         return max(0.0, floorf(Float(bounds.size.height - font.lineHeight - 4.0)))
+    }
+
+    private func tintClearImageIfNeeded() {
+        if let clearButtonColor = self.clearButtonColor {
+            for view in subviews {
+                if let button = view as? UIButton {
+                    button.setImage(button.image(for: .normal)?.withRenderingMode(.alwaysTemplate), for: .normal)
+                    button.tintColor = clearButtonColor
+                }
+            }
+        }
     }
 
     override open var textAlignment: NSTextAlignment {
@@ -441,6 +458,8 @@ import UIKit
         } else {
             showFloatingLabel(firstResponder)
         }
+
+        tintClearImageIfNeeded()
     }
 
     // MARK: - <UITextFieldDelegate>

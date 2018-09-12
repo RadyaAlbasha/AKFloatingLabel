@@ -8,7 +8,8 @@
 
 import UIKit
 
-@IBDesignable open class AKFloatingLabelTextField: UITextField, UITextFieldDelegate {
+@IBDesignable
+open class AKFloatingLabelTextField: UITextField, UITextFieldDelegate {
 
     // MARK: - Public Properties
 
@@ -128,7 +129,8 @@ import UIKit
     @IBInspectable public var floatingLabelYPadding: CGFloat = 0
 
     /**
-     * Indicates whether or not to drop the baseline when entering text. Setting to true (not the default) means the standard greyed-out placeholder will be aligned with the entered text
+     * Indicates whether or not to drop the baseline when entering text.
+       Setting to true (not the default) means the standard greyed-out placeholder will be aligned with the entered text
      * Defaults to false (standard placeholder will be above whatever text is entered)
      */
     @IBInspectable public var keepBaseline: Bool = false
@@ -237,7 +239,7 @@ import UIKit
                                               width: self.floatingLabel.frame.size.width, height: self.floatingLabel.frame.size.height)
         }
         if animated || animateEvenIfNotFirstResponder {
-            UIView.animate(withDuration: floatingLabelShowAnimationDuration, delay: 0.0, options: [.beginFromCurrentState, .curveEaseOut], animations: showBlock, completion: { _ in })
+            UIView.animate(withDuration: floatingLabelShowAnimationDuration, delay: 0.0, options: [.beginFromCurrentState, .curveEaseOut], animations: showBlock) { _ in }
         } else {
             showBlock()
         }
@@ -249,7 +251,7 @@ import UIKit
             self.floatingLabel.frame = CGRect(x: self.floatingLabel.frame.origin.x, y: self.floatingLabel.font.lineHeight + self.placeholderYPadding, width: self.floatingLabel.frame.size.width, height: self.floatingLabel.frame.size.height)
         }
         if animated || animateEvenIfNotFirstResponder {
-            UIView.animate(withDuration: floatingLabelHideAnimationDuration, delay: 0.0, options: [.beginFromCurrentState, .curveEaseIn], animations: hideBlock, completion: { _ in })
+            UIView.animate(withDuration: floatingLabelHideAnimationDuration, delay: 0.0, options: [.beginFromCurrentState, .curveEaseIn], animations: hideBlock) { _ in }
         } else {
             hideBlock()
         }
@@ -451,9 +453,9 @@ import UIKit
         let firstResponder = isFirstResponder
         let textIsEmpty = (self.text?.isEmpty ?? true)
 
-        floatingLabel.textColor = (firstResponder && (text != nil) && !textIsEmpty ? labelActiveColor() : floatingLabelTextColor)
+        floatingLabel.textColor = firstResponder && !textIsEmpty ? labelActiveColor() : floatingLabelTextColor
 
-        if (text == nil || textIsEmpty) && !alwaysShowFloatingLabel {
+        if textIsEmpty && !alwaysShowFloatingLabel {
             hideFloatingLabel(firstResponder)
         } else {
             showFloatingLabel(firstResponder)
@@ -505,10 +507,11 @@ import UIKit
             floatingLabelError.text = message
         case .invalid:
             lineColor = invalidTextFieldColor
-            if message != "" {
+            if !message.isEmpty {
                 floatingLabelError.text = message
             }
-        default: break
+        default:
+            break
         }
 
         if hasBottomBorder {

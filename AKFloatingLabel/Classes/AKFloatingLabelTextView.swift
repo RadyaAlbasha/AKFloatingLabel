@@ -8,7 +8,8 @@
 
 import UIKit
 
-@IBDesignable open class AKFloatingLabelTextView: UITextView {
+@IBDesignable
+open class AKFloatingLabelTextView: UITextView {
 
     public enum TextViewState: Int {
         case idle = 0
@@ -302,7 +303,7 @@ import UIKit
             self.floatingLabel.frame = CGRect(x: self.floatingLabel.frame.origin.x, y: top, width: self.floatingLabel.frame.size.width, height: self.floatingLabel.frame.size.height)
         }
         if (animated || animateEvenIfNotFirstResponder) && (!floatingLabelShouldLockToTop || floatingLabel.alpha != 1.0) {
-            UIView.animate(withDuration: floatingLabelShowAnimationDuration, delay: 0.0, options: [.beginFromCurrentState, .curveEaseOut], animations: showBlock, completion: { _ in })
+            UIView.animate(withDuration: floatingLabelShowAnimationDuration, delay: 0.0, options: [.beginFromCurrentState, .curveEaseOut], animations: showBlock) { _ in }
         } else {
             showBlock()
         }
@@ -314,7 +315,7 @@ import UIKit
             self.floatingLabel.frame = CGRect(x: self.floatingLabel.frame.origin.x, y: self.floatingLabel.font.lineHeight + self.placeholderYPadding, width: self.floatingLabel.frame.size.width, height: self.floatingLabel.frame.size.height)
         }
         if animated || animateEvenIfNotFirstResponder {
-            UIView.animate(withDuration: floatingLabelHideAnimationDuration, delay: 0.0, options: [.beginFromCurrentState, .curveEaseIn], animations: hideBlock, completion: { _ in })
+            UIView.animate(withDuration: floatingLabelHideAnimationDuration, delay: 0.0, options: [.beginFromCurrentState, .curveEaseIn], animations: hideBlock) { _ in }
         } else {
             hideBlock()
         }
@@ -375,7 +376,7 @@ import UIKit
         }
     }
 
-    override open var text: String! {
+    override open var text: String? {
         didSet {
             layoutSubviews()
         }
@@ -414,10 +415,11 @@ import UIKit
             floatingLabelError.text = message
         case .invalid:
             lineColor = invalidTextFieldColor
-            if message != "" {
+            if !message.isEmpty {
                 floatingLabelError.text = message
             }
-        default: break
+        default:
+            break
         }
 
         if hasBottomBorder {

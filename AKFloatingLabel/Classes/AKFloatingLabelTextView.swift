@@ -300,7 +300,10 @@ open class AKFloatingLabelTextView: UITextView {
             if true == self.floatingLabelShouldLockToTop {
                 top += self.contentOffset.y
             }
-            self.floatingLabel.frame = CGRect(x: self.floatingLabel.frame.origin.x, y: top, width: self.floatingLabel.frame.size.width, height: self.floatingLabel.frame.size.height)
+            self.floatingLabel.frame = CGRect(x: self.floatingLabel.frame.origin.x,
+                                              y: top,
+                                              width: self.floatingLabel.frame.size.width,
+                                              height: self.floatingLabel.frame.size.height)
         }
         if (animated || animateEvenIfNotFirstResponder) && (!floatingLabelShouldLockToTop || floatingLabel.alpha != 1.0) {
             UIView.animate(withDuration: floatingLabelShowAnimationDuration, delay: 0.0, options: [.beginFromCurrentState, .curveEaseOut], animations: showBlock) { _ in }
@@ -312,7 +315,10 @@ open class AKFloatingLabelTextView: UITextView {
     func hideFloatingLabel(_ animated: Bool) {
         let hideBlock: (() -> Void) = {() -> Void in
             self.floatingLabel.alpha = 0.0
-            self.floatingLabel.frame = CGRect(x: self.floatingLabel.frame.origin.x, y: self.floatingLabel.font.lineHeight + self.placeholderYPadding, width: self.floatingLabel.frame.size.width, height: self.floatingLabel.frame.size.height)
+            self.floatingLabel.frame = CGRect(x: self.floatingLabel.frame.origin.x,
+                                              y: self.floatingLabel.font.lineHeight + self.placeholderYPadding,
+                                              width: self.floatingLabel.frame.size.width,
+                                              height: self.floatingLabel.frame.size.height)
         }
         if animated || animateEvenIfNotFirstResponder {
             UIView.animate(withDuration: floatingLabelHideAnimationDuration, delay: 0.0, options: [.beginFromCurrentState, .curveEaseIn], animations: hideBlock) { _ in }

@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         self.edgesForExtendedLayout = UIRectEdge(rawValue: 0)
-        self.view.tintColor = UIColor.blue
+        self.view.tintColor = .blue
 
         let floatingLabelColor = UIColor.brown
 
@@ -94,7 +94,5 @@ class ViewController: UIViewController {
         self.view.addConstraint(NSLayoutConstraint(item: priceField, attribute: .height, relatedBy: .equal, toItem: div2, attribute: .height, multiplier: 1.0, constant: 0.0))
 
         self.view.addConstraint(NSLayoutConstraint(item: priceField, attribute: .height, relatedBy: .equal, toItem: locationField, attribute: .height, multiplier: 1.0, constant: 0.0))
-
-        titleField.becomeFirstResponder()
     }
 }

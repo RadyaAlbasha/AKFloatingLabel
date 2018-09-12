@@ -93,12 +93,6 @@ open class AKFloatingLabelTextField: UITextField, UITextFieldDelegate {
     @IBInspectable public var validTextFieldColor: UIColor = .gray
 
     /**
-     * Indicates whether the floating label's appearance should be animated regardless of first responder status.
-     * By default, animation only occurs if the text field is a first responder.
-     */
-    @IBInspectable public var animateEvenIfNotFirstResponder: Bool = false
-
-    /**
      * Indicates whether the clearButton position is adjusted to align with the text
      * Defaults to true.
      */
@@ -146,12 +140,6 @@ open class AKFloatingLabelTextField: UITextField, UITextFieldDelegate {
      * Defaults to nil
      */
     @IBInspectable public var clearButtonColor: UIColor?
-    
-    /**
-     * Show the floating label on first responder event
-     * Defaults to false
-     */
-    @IBInspectable public var showFloatingLabelOnFirstResponder: Bool = false
 
     // MARK: - Private Properties
 
@@ -199,10 +187,10 @@ open class AKFloatingLabelTextField: UITextField, UITextFieldDelegate {
         var textFieldFont: UIFont?
 
         if textFieldFont == nil, self.attributedPlaceholder != nil, let placeholder = self.attributedPlaceholder, placeholder.length > 0 {
-            textFieldFont = self.attributedPlaceholder?.attribute(NSAttributedStringKey.font, at: 0, effectiveRange: nil) as? UIFont
+            textFieldFont = self.attributedPlaceholder?.attribute(.font, at: 0, effectiveRange: nil) as? UIFont
         }
         if textFieldFont == nil, self.attributedText != nil, let placeholder = self.attributedText, placeholder.length > 0 {
-            textFieldFont = self.attributedText?.attribute(NSAttributedStringKey.font, at: 0, effectiveRange: nil) as? UIFont
+            textFieldFont = self.attributedText?.attribute(.font, at: 0, effectiveRange: nil) as? UIFont
         }
         if textFieldFont == nil {
             textFieldFont = self.font
@@ -241,10 +229,12 @@ open class AKFloatingLabelTextField: UITextField, UITextFieldDelegate {
     func showFloatingLabel(_ animated: Bool) {
         let showBlock: (() -> Void) = {() -> Void in
             self.floatingLabel.alpha = 1.0
-            self.floatingLabel.frame = CGRect(x: self.floatingLabel.frame.origin.x, y: self.floatingLabelYPadding,
-                                              width: self.floatingLabel.frame.size.width, height: self.floatingLabel.frame.size.height)
+            self.floatingLabel.frame = CGRect(x: self.floatingLabel.frame.origin.x,
+                                              y: self.floatingLabelYPadding,
+                                              width: self.floatingLabel.frame.size.width,
+                                              height: self.floatingLabel.frame.size.height)
         }
-        if animated || animateEvenIfNotFirstResponder {
+        if animated {
             UIView.animate(withDuration: floatingLabelShowAnimationDuration, delay: 0.0, options: [.beginFromCurrentState, .curveEaseOut], animations: showBlock) { _ in }
         } else {
             showBlock()
@@ -254,9 +244,12 @@ open class AKFloatingLabelTextField: UITextField, UITextFieldDelegate {
     func hideFloatingLabel(_ animated: Bool) {
         let hideBlock: (() -> Void) = {() -> Void in
             self.floatingLabel.alpha = 0.0
-            self.floatingLabel.frame = CGRect(x: self.floatingLabel.frame.origin.x, y: self.floatingLabel.font.lineHeight + self.placeholderYPadding, width: self.floatingLabel.frame.size.width, height: self.floatingLabel.frame.size.height)
+            self.floatingLabel.frame = CGRect(x: self.floatingLabel.frame.origin.x,
+                                              y: self.floatingLabel.font.lineHeight + self.placeholderYPadding,
+                                              width: self.floatingLabel.frame.size.width,
+                                              height: self.floatingLabel.frame.size.height)
         }
-        if animated || animateEvenIfNotFirstResponder {
+        if animated {
             UIView.animate(withDuration: floatingLabelHideAnimationDuration, delay: 0.0, options: [.beginFromCurrentState, .curveEaseIn], animations: hideBlock) { _ in }
         } else {
             hideBlock()
@@ -274,7 +267,10 @@ open class AKFloatingLabelTextField: UITextField, UITextFieldDelegate {
         } else if textAlignment == .right {
             originX = textRect.origin.x + textRect.size.width - floatingLabel.frame.size.width
         }
-        floatingLabel.frame = CGRect(x: originX + floatingLabelXPadding, y: floatingLabel.frame.origin.y, width: floatingLabel.frame.size.width, height: floatingLabel.frame.size.height)
+        floatingLabel.frame = CGRect(x: originX + floatingLabelXPadding,
+                                     y: floatingLabel.frame.origin.y,
+                                     width: floatingLabel.frame.size.width,
+                                     height: floatingLabel.frame.size.height)
     }
 
     func setLabelErrorOriginForTextAlignment() {
@@ -317,7 +313,7 @@ open class AKFloatingLabelTextField: UITextField, UITextFieldDelegate {
 
     func setCorrectPlaceholder(_ placeholder: String?) {
         if let placeholderColor = placeholderColor, let placeholder = placeholder {
-            let attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
+            let attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: placeholderColor])
             super.attributedPlaceholder = attributedPlaceholder
         } else {
             super.placeholder = placeholder
@@ -456,12 +452,12 @@ open class AKFloatingLabelTextField: UITextField, UITextFieldDelegate {
                                          width: floatingLabelSize.width, height: floatingLabelSize.height)
         }
 
-        let firstResponder = isFirstResponder && showFloatingLabelOnFirstResponder
+        let firstResponder = isFirstResponder
         let textIsEmpty = (self.text?.isEmpty ?? true)
 
         floatingLabel.textColor = firstResponder && !textIsEmpty ? labelActiveColor() : floatingLabelTextColor
 
-        if textIsEmpty && !alwaysShowFloatingLabel && !firstResponder {
+        if !firstResponder && !alwaysShowFloatingLabel {
             hideFloatingLabel(firstResponder)
         } else {
             showFloatingLabel(firstResponder)

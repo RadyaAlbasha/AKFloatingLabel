@@ -146,6 +146,12 @@ open class AKFloatingLabelTextField: UITextField, UITextFieldDelegate {
      * Defaults to nil
      */
     @IBInspectable public var clearButtonColor: UIColor?
+    
+    /**
+     * Show the floating label on first responder event
+     * Defaults to false
+     */
+    @IBInspectable public var showFloatingLabelOnFirstResponder: Bool = false
 
     // MARK: - Private Properties
 
@@ -450,12 +456,12 @@ open class AKFloatingLabelTextField: UITextField, UITextFieldDelegate {
                                          width: floatingLabelSize.width, height: floatingLabelSize.height)
         }
 
-        let firstResponder = isFirstResponder
+        let firstResponder = isFirstResponder && showFloatingLabelOnFirstResponder
         let textIsEmpty = (self.text?.isEmpty ?? true)
 
         floatingLabel.textColor = firstResponder && !textIsEmpty ? labelActiveColor() : floatingLabelTextColor
 
-        if textIsEmpty && !alwaysShowFloatingLabel {
+        if textIsEmpty && !alwaysShowFloatingLabel && !firstResponder {
             hideFloatingLabel(firstResponder)
         } else {
             showFloatingLabel(firstResponder)

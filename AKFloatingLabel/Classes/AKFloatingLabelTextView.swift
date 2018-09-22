@@ -220,22 +220,22 @@ open class AKFloatingLabelTextView: UITextView {
 
         self.layer.addSublayer(bottomBorder)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(self.layoutSubviews), name: NSNotification.Name.UITextViewTextDidChange, object: self)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.layoutSubviews), name: NSNotification.Name.UITextViewTextDidBeginEditing, object: self)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.layoutSubviews), name: NSNotification.Name.UITextViewTextDidEndEditing, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.layoutSubviews), name: UITextView.textDidChangeNotification, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.layoutSubviews), name: UITextView.textDidBeginEditingNotification, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.layoutSubviews), name: UITextView.textDidEndEditingNotification, object: self)
     }
 
     deinit {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextViewTextDidChange, object: self)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextViewTextDidBeginEditing, object: self)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextViewTextDidEndEditing, object: self)
+        NotificationCenter.default.removeObserver(self, name: UITextView.textDidChangeNotification, object: self)
+        NotificationCenter.default.removeObserver(self, name: UITextView.textDidBeginEditingNotification, object: self)
+        NotificationCenter.default.removeObserver(self, name: UITextView.textDidEndEditingNotification, object: self)
     }
 
     func defaultFloatingLabelFont() -> UIFont? {
         var textViewFont: UIFont?
 
         if textViewFont == nil, placeholderLabel.attributedText != nil, let placeholder = placeholderLabel.attributedText, placeholder.length > 0 {
-            textViewFont = placeholderLabel.attributedText?.attribute(NSAttributedStringKey.font, at: 0, effectiveRange: nil) as? UIFont
+            textViewFont = placeholderLabel.attributedText?.attribute(NSAttributedString.Key.font, at: 0, effectiveRange: nil) as? UIFont
         }
         if textViewFont == nil {
             textViewFont = placeholderLabel.font
@@ -361,7 +361,7 @@ open class AKFloatingLabelTextView: UITextView {
     }
 
     func textRect() -> CGRect {
-        var rect = UIEdgeInsetsInsetRect(bounds, contentInset)
+        var rect = bounds.inset(by: contentInset)
         rect.origin.x += textContainer.lineFragmentPadding
         rect.origin.y += textContainerInset.top
         return rect.integral

@@ -30,7 +30,7 @@ class ViewController: UIViewController {
 
         let titleField = AKFloatingLabelTextField(frame: .zero)
         titleField.font = UIFont.systemFont(ofSize: 16)
-        titleField.attributedPlaceholder = NSAttributedString(string: "Title", attributes: [NSAttributedStringKey.foregroundColor: UIColor.darkGray])
+        titleField.attributedPlaceholder = NSAttributedString(string: "Title", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         titleField.floatingLabelFont = UIFont.boldSystemFont(ofSize: 11)
         titleField.floatingLabelTextColor = floatingLabelColor
         titleField.clearButtonMode = .whileEditing
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
 
         let priceField = AKFloatingLabelTextField(frame: .zero)
         priceField.font = UIFont.systemFont(ofSize: 16)
-        priceField.attributedPlaceholder = NSAttributedString(string: "Price", attributes: [NSAttributedStringKey.foregroundColor: UIColor.darkGray])
+        priceField.attributedPlaceholder = NSAttributedString(string: "Price", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         priceField.floatingLabelFont = UIFont.boldSystemFont(ofSize: 11)
         priceField.floatingLabelTextColor = floatingLabelColor
         view.addSubview(priceField)
@@ -59,7 +59,7 @@ class ViewController: UIViewController {
 
         let locationField = AKFloatingLabelTextField(frame: .zero)
         locationField.font = UIFont.systemFont(ofSize: 16)
-        locationField.attributedPlaceholder = NSAttributedString(string: "Specific Location (optional)", attributes: [NSAttributedStringKey.foregroundColor: UIColor.darkGray])
+        locationField.attributedPlaceholder = NSAttributedString(string: "Specific Location (optional)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         locationField.floatingLabelFont = UIFont.boldSystemFont(ofSize: 11)
         locationField.floatingLabelTextColor = floatingLabelColor
         view.addSubview(locationField)
@@ -79,17 +79,17 @@ class ViewController: UIViewController {
         view.addSubview(descriptionField)
         descriptionField.translatesAutoresizingMaskIntoConstraints = false
 
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(xMargin)-[titleField]-(xMargin)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: ["xMargin": 10], views: ["titleField": titleField]))
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(xMargin)-[titleField]-(xMargin)-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: ["xMargin": 10], views: ["titleField": titleField]))
 
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[div1]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["div1": div1]))
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[div1]|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["div1": div1]))
 
         self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(xMargin)-[priceField]-(xMargin)-[div2(1)]-(xMargin)-[locationField]-(xMargin)-|", options: .alignAllCenterY, metrics: ["xMargin": 10], views: ["priceField": priceField, "div2": div2, "locationField": locationField]))
 
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[div3]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["div3": div3]))
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[div3]|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["div3": div3]))
 
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(xMargin)-[descriptionField]-(xMargin)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: ["xMargin": 10], views: ["descriptionField": descriptionField]))
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(xMargin)-[descriptionField]-(xMargin)-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: ["xMargin": 10], views: ["descriptionField": descriptionField]))
 
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[titleField(>=minHeight)][div1(1)][priceField(>=minHeight)][div3(1)][descriptionField]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: ["minHeight": 44], views: ["titleField": titleField, "div1": div1, "priceField": priceField, "div3": div3, "descriptionField": descriptionField]))
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[titleField(>=minHeight)][div1(1)][priceField(>=minHeight)][div3(1)][descriptionField]|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: ["minHeight": 44], views: ["titleField": titleField, "div1": div1, "priceField": priceField, "div3": div3, "descriptionField": descriptionField]))
 
         self.view.addConstraint(NSLayoutConstraint(item: priceField, attribute: .height, relatedBy: .equal, toItem: div2, attribute: .height, multiplier: 1.0, constant: 0.0))
 

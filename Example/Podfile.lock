@@ -1,8 +1,14 @@
 PODS:
   - AKFloatingLabel (1.0.0)
+  - SketchKit (1.0.0)
 
 DEPENDENCIES:
   - AKFloatingLabel (from `../`)
+  - SketchKit
+
+SPEC REPOS:
+  trunk:
+    - SketchKit
 
 EXTERNAL SOURCES:
   AKFloatingLabel:
@@ -10,7 +16,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AKFloatingLabel: ec40d2f6c269584ecc5f7773e1382127e6155fef
+  SketchKit: 48dac4c734805f3941e29d7e826fb9bfe014dbd4
 
-PODFILE CHECKSUM: dd19e3e4b0950bbec4d37440a1c16068aa1a7db2
+PODFILE CHECKSUM: c93b7af9ffda02000f3bd8ea93a45a789433f1d8
 
 COCOAPODS: 1.8.4

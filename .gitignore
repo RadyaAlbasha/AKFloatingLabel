@@ -29,6 +29,9 @@ xcuserdata/
 ## Git
 *.orig
 
+## RBEnv
+.ruby-version
+
 ## Obj-C/Swift specific
 *.hmap
 *.ipa

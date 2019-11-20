@@ -145,7 +145,7 @@ open class AKFloatingLabelTextField: UITextField, UITextFieldDelegate {
 
     private var isFloatingLabelFontDefault: Bool = true
 
-    private var bottomBorder: CALayer = CALayer()
+    private var bottomBorder = CALayer()
 
     // MARK: -
 
@@ -154,7 +154,7 @@ open class AKFloatingLabelTextField: UITextField, UITextFieldDelegate {
         commonInit()
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }

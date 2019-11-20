@@ -116,12 +116,12 @@ open class AKFloatingLabelTextView: UITextView {
     /**
      * Read-only access to the placeholder label.
      */
-    public var placeholderLabel: UILabel = UILabel()
+    public var placeholderLabel = UILabel()
 
     /**
      * Read-only access to the floating label.
      */
-    public var floatingLabel: UILabel = UILabel()
+    public var floatingLabel = UILabel()
 
     /**
      * Read-only access to the floating error label.
@@ -168,14 +168,14 @@ open class AKFloatingLabelTextView: UITextView {
         }
     }
 
-    private var bottomBorder: CALayer = CALayer()
+    private var bottomBorder = CALayer()
 
     override public init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         commonInit()
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
 
